@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel=stylesheet href="JS-API-demo.css" type="text/css">
+
+    <!-- Tableau JavaScript API library -->
+    <script src="https://public.tableausoftware.com/javascripts/api/tableau_v8.debug.js"></script>
+
+    <!-- jQuery libraries -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- OAuth libraries for accessing the Yelp API (Google).
+         For more information about using jQuery to call Yelp and JSONP, see:
+            http://stackoverflow.com/questions/13149211/yelp-api-google-app-script-oauth
+            http://www.sitepoint.com/jsonp-examples/
+            http://stackoverflow.com/questions/29152676/yelp-api-oauth-invalid-signature-expected-signature-base-string
+    -->
+    <script src="http://oauth.googlecode.com/svn/code/javascript/oauth.js"></script>
+    <script src="http://oauth.googlecode.com/svn/code/javascript/sha1.js"></script>
+
+    <!-- Demo JavaScript code -->
+    <script src="JS-API-demo-global-values.js"></script>
+    <script src="JS-API-demo.js"></script>
+</head>
+
+<body>
+    <div class="header-pane">
+        <div class="header-content">
+            <h1>My Awesome Blog</h1>
+            <p>Thoughts about working at Tableau</p>
+        </div>
+    </div>
+    <!-- end header-pane -->
+
+    <div class="left-pane">
+        <p id="status">&nbsp;</p>
+    </div>
+    <!-- end left-pane -->
+
+    <div class="main-pane">
+
+        <h2>You want to go
+            <em>where</em> for lunch?</h2>
+        <p>
+            My colleague Ben posted a cool (scary?) viz that shows the results of health inspections at restaurants near our office. Before you go to lunch, click
+            <a href="javascript:void(0);" onclick="loadviz();">here</a> to see the viz. To resize the viz, use the slider:</p>
+
+        <div>
+            <div class="slider" id="slider">
+                <p class="small-caption" style="float:left;">Small</p>
+                <p class="small-caption" style="float:right;">Large</p>
+            </div>
+            <p style="clear:both;">
+        </div>
+
+        <p>Here are some of my faves&mdash;click to filter:</p>
+        <ul>
+            <li><a href="javascript:void(0);" onclick="filterRestaurant('BARREL THIEF, THE');">The Barrel Thief</a></li>
+            <li><a href="javascript:void(0);" onclick="filterRestaurant('SOLSTICIO FREMONT');">Solsticio Coffee</a></li>
+            <li><a href="javascript:void(0);" onclick="filterRestaurant('FREMONT BREWING COMPANY');">Fremont Brewing Company</a></li>
+            <li><a href="javascript:void(0);" onclick="filterRestaurant('RED STAR TACO BAR');">Red Star Taco Bar</a></li>
+        </ul>
+
+        <p>Click <a id="linkClearFilters" href="javascript:void(0);" onclick="clearFilters();">here</a> to see all the restaurants again.</p>
+
+        <p>Click dots on the map to see Yelp reviews!</p>
+
+        <div id="tableauViz"></div>
+    </div>
+    <!-- end main-pane  -->
+
+    <div class="right-pane">&nbsp;</div>
+
+    <div id="dialogbox">
+        <div id="dialogText"></div>
+    </div>
+    <!-- end right-pane -->
+
+</body>
+
+</html>
